@@ -4,18 +4,20 @@ using namespace std;
 
 #include "UzytkownikMenadzer.h"
 #include "MetodyPomocnicze.h"
+#include "BudzetMenadzer.h"
+#include "BudzetOsobisty.h"
 
 int main() {
     char wybor;
 
-    UzytkownikMenadzer uzytkownikMenadzer("users.xml");
     MetodyPomocnicze metodyPomocnicze;
+    BudzetOsobisty budzetOsobisty("users.xml", "incomes.xml");
 
 
     while (true) {
 
 
-        if (uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika() == 0) {
+        if (budzetOsobisty.pobierzIdZalogowanegoUzytkownika() == 0) {
             system("cls");
             cout << "    >>> MENU  GLOWNE <<<" << endl;
             cout << "---------------------------" << endl;
@@ -28,14 +30,13 @@ int main() {
             wybor = metodyPomocnicze.getChoice();
             switch (wybor) {
             case '1':
-                uzytkownikMenadzer.rejestracjaUzytkownika();
+                budzetOsobisty.rejestracjaUzytkownika();
                 break;
             case '2':
-                uzytkownikMenadzer.logowanieUzytkownika();
-                system("pause");
+                budzetOsobisty.logowanieUzytkownika();
                 break;
             case '3':
-                uzytkownikMenadzer.wypiszWszystkichUzytkownikow();
+                budzetOsobisty.wypiszWszystkichUzytkownikow();
                 break;
             case '9':
                 exit(0);
@@ -46,12 +47,15 @@ int main() {
                 break;
             }
         } else {
+            budzetOsobisty.wczytajPrzychodyZalogowanegoUzytkownikaZPliku(budzetOsobisty.pobierzIdZalogowanegoUzytkownika());
             system("cls");
             cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
             cout << "---------------------------" << endl;
-            /* cout << "1. Dodaj adresata" << endl;
-            cout << "2. Wyszukaj po imieniu" << endl;
-            cout << "3. Wyszukaj po nazwisku" << endl;
+            cout << "1. Dodaj przychod" << endl;
+            cout << "2. Wyswietl wszytskie przychody" << endl;
+
+            cout << "3. Wyswietl id zalogowanego uzytkownika" << endl;
+            /*
             cout << "4. Wyswietl adresatow" << endl;
             cout << "5. Usun adresata" << endl;
             cout << "6. Edytuj adresata" << endl;
@@ -62,29 +66,32 @@ int main() {
             cout << "Twoj wybor: ";
             wybor = metodyPomocnicze.getChoice();
             switch (wybor) {
-            /* case '1':
-                 KsiazkaAdresowa.dodajAdresata();
-                 break;
-             case '2':
-                 KsiazkaAdresowa.wyszukajAdresatowPoImieniu();
-                 break;
-             case '3':
-                 KsiazkaAdresowa.wyszukajAdresatowPoNazwisku();
-                 break;
-             case '4':
-                 KsiazkaAdresowa.wyswietlWszystkichAdresatow();
-                 break;
-             case '5':
-                 plikZAdresatami.ustawIdOstatniegoAdresata(KsiazkaAdresowa.usunAdresata());
-                 break;
-             case '6':
-                 KsiazkaAdresowa.edytujAdresata();
-                 break; */
-             case '7':
-                 uzytkownikMenadzer.zmianaHaslaZalogowanegoUzytkownika();
-                 break;
+            case '1':
+                budzetOsobisty.dodajPrzychod();
+                break;
+
+            case '2':
+            budzetOsobisty.wyswietlWszystkiePrzychody();
+            break;
+
+            case '3':
+            budzetOsobisty.wyswietlIdZalogowanegoUzytkownika();
+            break;
+            /*
+            case '4':
+            KsiazkaAdresowa.wyswietlWszystkichAdresatow();
+            break;
+            case '5':
+            plikZAdresatami.ustawIdOstatniegoAdresata(KsiazkaAdresowa.usunAdresata());
+            break;
+            case '6':
+            KsiazkaAdresowa.edytujAdresata();
+            break; */
+            case '7':
+                budzetOsobisty.zmianaHaslaZalogowanegoUzytkownika();
+                break;
             case '8':
-                uzytkownikMenadzer.wylogowanieUzytkownika();
+                budzetOsobisty.wylogowanieUzytkownika();
                 break;
             }
         }

@@ -3,22 +3,7 @@
 
 void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
 
-
-    /*)  plikTekstowy.open(nazwaPlikuZUzytkownikami.c_str(), ios::app);
-
-      if (plikTekstowy.good() == true) {
-          liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(uzytkownik);
-
-          if (czyPlikJestPusty() == true) {
-              plikTekstowy << liniaZDanymiUzytkownika;
-          } else {
-              plikTekstowy << endl << liniaZDanymiUzytkownika ;
-          }
-      } else
-          cout << "Nie udalo sie otworzyc pliku " << nazwaPlikuZUzytkownikami << " i zapisac w nim danych." << endl;
-      plikTekstowy.close(); */
-
-
+    bool fileExists = xml.Load(pobierzNazwePliku());
 
     if (!fileExists) {
         xml.AddElem("Users");
@@ -29,16 +14,17 @@ void PlikZUzytkownikami::dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) {
     xml.IntoElem();
     xml.AddElem("UserId", uzytkownik.pobierzId());
     xml.AddElem("Login", uzytkownik.pobierzLogin());
+    xml.AddElem("Name", uzytkownik.getName());
+    xml.AddElem("Surname", uzytkownik.getSurname());
     xml.AddElem("Password", uzytkownik.pobierzHaslo());
     xml.OutOfElem();
-    xml.Save("users.xml");
+    xml.Save(pobierzNazwePliku());
 }
 
 vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku() {
 
     Uzytkownik uzytkownik;
     vector <Uzytkownik> uzytkownicy;
-    string daneJednegoUzytkownikaOddzielonePionowymiKreskami = "";
 
 
     xml.Load(pobierzNazwePliku());
@@ -52,10 +38,16 @@ vector <Uzytkownik> PlikZUzytkownikami::wczytajUzytkownikowZPliku() {
         MCD_STR strUserId = xml.GetData();
         xml.FindElem( "Login" );
         MCD_STR strLogin = xml.GetData();
+        xml.FindElem( "Name" );
+        MCD_STR strName = xml.GetData();
+        xml.FindElem( "Surname" );
+        MCD_STR strSurname = xml.GetData();
         xml.FindElem( "Password" );
         MCD_STR strPassword = xml.GetData();
         uzytkownik.ustawId(atoi(strUserId.c_str()));
         uzytkownik.ustawLogin(strLogin);
+        uzytkownik.setName(strName);
+        uzytkownik.setSurname(strSurname);
         uzytkownik.ustawHaslo(strPassword);
         uzytkownicy.push_back(uzytkownik);
         xml.OutOfElem();

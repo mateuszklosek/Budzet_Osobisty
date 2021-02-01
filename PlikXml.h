@@ -16,7 +16,6 @@ public:
     CMarkup xml;
     PlikXml(string nazwaPliku) : NAZWA_PLIKU(nazwaPliku) {}
     string pobierzNazwePliku();
-    bool fileExists = xml.Load(NAZWA_PLIKU);
 };
 
 #endif

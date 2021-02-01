@@ -7,9 +7,10 @@
 #include <cstdlib>
 #include <vector>
 
+using namespace std;
+
 class PlikZUzytkownikami : public PlikXml {
 
-    //CMarkup xml;
 
 public:
 

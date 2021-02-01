@@ -1,0 +1,16 @@
+<Incomes>
+<Income>
+<IncomeId>1</IncomeId>
+<UserId>1</UserId>
+<Date>20200119</Date>
+<Item>Kieszonkowe</Item>
+<Amount>10</Amount>
+</Income>
+<Income>
+<IncomeId>1</IncomeId>
+<UserId>1</UserId>
+<Date>20210105</Date>
+<Item>Sprzedaz na allegro</Item>
+<Amount>200</Amount>
+</Income>
+</Incomes>

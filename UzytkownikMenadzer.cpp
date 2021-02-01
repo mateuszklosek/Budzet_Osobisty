@@ -23,7 +23,13 @@ Uzytkownik UzytkownikMenadzer::podajDaneNowegoUzytkownika() {
         uzytkownik.ustawLogin(login);
 
     } while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
-    string haslo;
+    string haslo, imie, nazwisko;
+    cout << "Podaj imie: ";
+    cin >> imie;
+    uzytkownik.setName(imie);
+    cout << "Podaj nazwisko: ";
+    cin >> nazwisko;
+    uzytkownik.setSurname(nazwisko);
     cout << "Podaj haslo: ";
     cin >> haslo;
     uzytkownik.ustawHaslo(haslo);
@@ -40,9 +46,7 @@ int UzytkownikMenadzer::pobierzIdNowegoUzytkownika() {
 void UzytkownikMenadzer::wypiszWszystkichUzytkownikow() {
     system("cls");
     for (int i = 0; i < uzytkownicy.size(); i++) {
-        cout << uzytkownicy[i].pobierzId() << endl;
-        cout << uzytkownicy[i].pobierzLogin() << endl;
-        cout << uzytkownicy[i].pobierzHaslo() << endl;
+        cout << "ID: " << uzytkownicy[i].pobierzId() << " " << uzytkownicy[i].pobierzLogin()<<" Imie: "<< uzytkownicy[i].getName() << " Nazwisko: "<< uzytkownicy[i].getSurname() << endl;
     }
     system("pause");
 }

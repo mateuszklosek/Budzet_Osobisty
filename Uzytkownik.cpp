@@ -15,6 +15,15 @@ void Uzytkownik::ustawHaslo(string noweHaslo)
     haslo = noweHaslo;
 }
 
+void Uzytkownik::setName (string newName)
+{
+    name = newName;
+}
+void Uzytkownik::setSurname(string newSurname)
+{
+    surname = newSurname;
+}
+
 int Uzytkownik::pobierzId()
 {
     return id;
@@ -26,4 +35,12 @@ string Uzytkownik::pobierzLogin()
 string Uzytkownik::pobierzHaslo()
 {
     return haslo;
+}
+string Uzytkownik::getName()
+{
+    return name;
+}
+string Uzytkownik::getSurname()
+{
+    return surname;
 }
