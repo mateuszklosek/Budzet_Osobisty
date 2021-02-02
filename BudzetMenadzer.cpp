@@ -38,6 +38,7 @@ Przychod BudzetMenadzer::podajDaneNowegoPrzychodu() {
 }
 void BudzetMenadzer::wyswietlWszystkiePrzychody(){
     system("cls");
+    sortujPrzychody();
     if (!przychody.empty()) {
         cout << "             >>> PRZYCHODY <<<" << endl;
         for (int i = 0; i < przychody.size(); i++) {
@@ -63,13 +64,9 @@ int BudzetMenadzer::wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowa
 plikZPrzychodami.wczytajPrzychodyZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
 }
 
-/*bool BudzetMenadzer::sortuj(const Przychod& przychod1,const Przychod& przychod2){
-return (przychod1 -> getDate() < przychod2 -> getDate());
+void BudzetMenadzer::sortujPrzychody(){
+
+sort(przychody.begin() , przychody.end(), porownanieDat);
+
 }
-
-void BudzetMenadzer::sortujPrzychody(vector <Przychod> przychody)
-
-sort(przychody.begin() , przychody.end(), sortuj);
-
-} */
 

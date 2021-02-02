@@ -13,4 +13,32 @@
 <Item>Sprzedaz na allegro</Item>
 <Amount>200</Amount>
 </Income>
+<Income>
+<IncomeId>1</IncomeId>
+<UserId>1</UserId>
+<Date>20190101</Date>
+<Item>Sprzedaz na vinted</Item>
+<Amount>200</Amount>
+</Income>
+<Income>
+<IncomeId>1</IncomeId>
+<UserId>1</UserId>
+<Date>20200506</Date>
+<Item>Znalezione na ulicy</Item>
+<Amount>5</Amount>
+</Income>
+<Income>
+<IncomeId>1</IncomeId>
+<UserId>1</UserId>
+<Date>20220520</Date>
+<Item>Wyplata</Item>
+<Amount>2000</Amount>
+</Income>
+<Income>
+<IncomeId>1</IncomeId>
+<UserId>1</UserId>
+<Date>20160719</Date>
+<Item>Wyplata</Item>
+<Amount>2400</Amount>
+</Income>
 </Incomes>

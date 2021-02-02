@@ -30,9 +30,20 @@ Przychod podajDaneNowegoPrzychodu();
 void wyswietlWszystkiePrzychody();
 void wyswietlPrzychod(int i);
 int wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
-bool sortuj(const Przychod& przychod1,const Przychod& przychod2);
-void sortujPrzychody(vector <Przychod> przychody);
+//bool sortuj(const Przychod& przychod1,const Przychod& przychod2);
+void sortujPrzychody();
 
+struct Porownanie{
+bool operator()(Przychod przychod1, Przychod przychod2)
+{if(przychod1.getDate() < przychod2.getDate())
+{
+    return true;
+}
+else{
+    return false;
+}
+}
+}porownanieDat;
 };
 
 
