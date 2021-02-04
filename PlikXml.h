@@ -16,6 +16,7 @@ public:
     CMarkup xml;
     PlikXml(string nazwaPliku) : NAZWA_PLIKU(nazwaPliku) {}
     string pobierzNazwePliku();
+
 };
 
 #endif

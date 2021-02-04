@@ -10,22 +10,20 @@
 using namespace std;
 
 class PlikZPrzychodami : public PlikXml {
+private:
+
+int idOstatniegoPrzychodu;
 
 public:
 
-    PlikZPrzychodami(string nazwaPliku) : PlikXml(nazwaPliku) {};
+    PlikZPrzychodami(string nazwaPliku) : PlikXml(nazwaPliku) { idOstatniegoPrzychodu = 0;};
 
     vector <Przychod> wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
 
     void dopiszPrzychodDoPliku(Przychod przychod);
+    int pobierzIdOstatniegoPrzychodu();
+    //int pobierzIdOstatniegoPrzychoduZPliku();
 
-
-    /*
-    void rejestracja();
-    void wyswietlWszystkichUzytkownikow();
-    void dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik);
-    vector <Uzytkownik> wczytajUzytkownikowZPliku();
-    void zapiszNoweHasloDoPliku(string noweHaslo, int idZalogowanegoUzytkownika);*/
 };
 
 

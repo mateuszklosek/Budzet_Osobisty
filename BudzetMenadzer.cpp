@@ -5,38 +5,57 @@ void BudzetMenadzer::dodajPrzychod() {
 
     cout << " >>> DODAWANIE NOWEGO PRZYCHODU <<<" << endl << endl;
     przychod = podajDaneNowegoPrzychodu();
+    if (przychod.getDate() == 0 ) {
+        cout << "Data nieprawidlowa !!!" << endl;
+        system("pause");
+    } else {
+        przychody.push_back(przychod);
+        plikZPrzychodami.dopiszPrzychodDoPliku(przychod);
+        cout<< "Nowy przychod zostal dodany!"<<endl;
+        system("pause");
+    }
 
-    przychody.push_back(przychod);
-    plikZPrzychodami.dopiszPrzychodDoPliku(przychod);
-    cout<< "Nowy przychod zostal dodany!"<<endl;
-    system("pause");
 }
 
 Przychod BudzetMenadzer::podajDaneNowegoPrzychodu() {
     string date;
-    //adresat.ustawId(plikZAdresatami.pobierzIdOstatniegoAdresata()+1);
-    system("pause");
-    cout << ID_ZALOGOWANEGO_UZYTKOWNIKA << endl;
-    system("pause");
+    char wybor;
     przychod.setUserId(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    przychod.setIncomeId(plikZPrzychodami.pobierzIdOstatniegoPrzychodu()+1);
 
-    //przychod.setIncomeId(asdasda);
 
     cout << "Podaj rodzaj przychodu: ";
     przychod.setItem(metodyPomocnicze.getLine());
-    //adresat.ustawImie(metodyPomocniczne.zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.pobierzImie()));
 
     cout << "Podaj wysokosc przychodu [PLN]: ";
     przychod.setAmount(metodyPomocnicze.getLine());
-    //adresat.ustawNazwisko(metodyPomocniczne.zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.pobierzNazwisko()));
+    system("cls");
+    cout << "    >>> Wybierz co chcesz zrobic <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Podaj dowolna date" << endl;
+    cout << "2. Data dzisiejsza" << endl;
 
-    cout << "Podaj date w formacie rrrr-mm-dd ";
-    date = metodyPomocnicze.getLine();
-    przychod.setDate(metodyPomocnicze.dateToInt(date));
+    wybor = metodyPomocnicze.getChoice();
+    switch (wybor) {
+    case '1':
+        cout << "Podaj date w formacie rrrr-mm-dd: " << endl;
+        date = metodyPomocnicze.getLine();
+        if (metodyPomocnicze.isDateCorrect(date) == true) {
+            przychod.setDate(metodyPomocnicze.dateToInt(date));
+            break;
+        } else {
+            przychod.setDate(0);
+            break;
+        }
+    case '2':
+        date = metodyPomocnicze.localDate();
+        przychod.setDate(metodyPomocnicze.dateToInt(date));
+        break;
+    }
 
     return przychod;
 }
-void BudzetMenadzer::wyswietlWszystkiePrzychody(){
+void BudzetMenadzer::wyswietlWszystkiePrzychody() {
     system("cls");
     sortujPrzychody();
     if (!przychody.empty()) {
@@ -51,22 +70,25 @@ void BudzetMenadzer::wyswietlWszystkiePrzychody(){
     system("pause");
 }
 
-void BudzetMenadzer::wyswietlPrzychod(int liczba){
+void BudzetMenadzer::wyswietlPrzychod(int liczba) {
     int date;
     date = przychody[liczba].getDate();
     cout << "----------------------------------------------------"<< endl;
+    cout << "Numer ID:             " << przychody[liczba].getIncomeId() << endl;
     cout << "Data:             " << metodyPomocnicze.dateToString(date) << endl;
     cout << "Rodzaj:           " << przychody[liczba].getItem() << endl;
-    cout << "Wartosc [PLN]:    " << przychody[liczba].getAmount() << endl;
+    cout << "Wartosc [PLN]:    " << metodyPomocnicze.commaToDot(przychody[liczba].getAmount()) << endl;
 }
 
-int BudzetMenadzer::wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika){
-plikZPrzychodami.wczytajPrzychodyZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
+int BudzetMenadzer::wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika) {
+    plikZPrzychodami.wczytajPrzychodyZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
 }
 
-void BudzetMenadzer::sortujPrzychody(){
+void BudzetMenadzer::sortujPrzychody() {
 
-sort(przychody.begin() , przychody.end(), porownanieDat);
+    sort(przychody.begin(), przychody.end(), porownanieDat);
 
 }
 
+int BudzetMenadzer::pobierzIdOstatniegoPrzychodu(){
+return plikZPrzychodami.pobierzIdOstatniegoPrzychodu();}

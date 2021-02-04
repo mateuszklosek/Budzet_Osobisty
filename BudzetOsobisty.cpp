@@ -40,5 +40,6 @@ int BudzetOsobisty::wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowa
 
 void BudzetOsobisty::wyswietlIdZalogowanegoUzytkownika(){
 cout << pobierzIdZalogowanegoUzytkownika() << endl;
+cout << budzetMenadzer -> pobierzIdOstatniegoPrzychodu() << endl;
 system("pause");
 }

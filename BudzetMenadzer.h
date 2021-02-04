@@ -30,8 +30,8 @@ Przychod podajDaneNowegoPrzychodu();
 void wyswietlWszystkiePrzychody();
 void wyswietlPrzychod(int i);
 int wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
-//bool sortuj(const Przychod& przychod1,const Przychod& przychod2);
 void sortujPrzychody();
+int pobierzIdOstatniegoPrzychodu();
 
 struct Porownanie{
 bool operator()(Przychod przychod1, Przychod przychod2)
