@@ -60,24 +60,6 @@ vector <Przychod> PlikZPrzychodami::wczytajPrzychodyZalogowanegoUzytkownikaZPlik
     return przychody;
 }
 
-/* int PlikZPrzychodami::pobierzIdOstatniegoPrzychoduZPliku() {
-
-    xml.Load(pobierzNazwePliku());
-    xml.ResetPos();
-    xml.FindElem();
-    xml.IntoElem();
-
-    while ( xml.FindElem("Income") ) {
-        xml.IntoElem();
-        xml.FindElem( "IncomeId" );
-        MCD_STR strIncomeId = xml.GetData();
-        idOstatniegoPrzychodu = atoi(strIncomeId.c_str());
-        xml.OutOfElem();
-    }
-
-    return idOstatniegoPrzychodu;
-} */
-
 int PlikZPrzychodami::pobierzIdOstatniegoPrzychodu() {
     return idOstatniegoPrzychodu;
 }

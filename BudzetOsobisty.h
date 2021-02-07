@@ -10,9 +10,10 @@ class BudzetOsobisty {
     BudzetMenadzer *budzetMenadzer;
     MetodyPomocnicze metodyPomocnicze;
     const string NAZWA_PLIKU_Z_PRZYCHODAMI;
+    const string NAZWA_PLIKU_Z_WYDATKAMI;
 
 public:
-    BudzetOsobisty(string nazwaPlikuZUzytkownikami, string nazwaPlikuZPrzychodami) : uzytkownikMenadzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_PRZYCHODAMI(nazwaPlikuZPrzychodami){
+    BudzetOsobisty(string nazwaPlikuZUzytkownikami, string nazwaPlikuZPrzychodami, string nazwaPlikuZWydatkami) : uzytkownikMenadzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_PRZYCHODAMI(nazwaPlikuZPrzychodami), NAZWA_PLIKU_Z_WYDATKAMI(nazwaPlikuZWydatkami){
     budzetMenadzer = NULL;
     };
     ~BudzetOsobisty()
@@ -27,9 +28,13 @@ public:
     int logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     void dodajPrzychod();
+    void dodajWydatek();
     void wyswietlWszystkiePrzychody();
     int wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     void wyswietlIdZalogowanegoUzytkownika();
+    void bilansZObecnegoMiesiaca();
+    void bilansZPoprzedniegoMiesiaca();
+    void bilansZWybranegoOkres();
 
 
 };

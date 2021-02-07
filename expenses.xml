@@ -1,0 +1,16 @@
+<Expenses>
+<Expense>
+<ExpenseId>1</ExpenseId>
+<UserId>1</UserId>
+<Date>20210207</Date>
+<Item>Zakupy w biedronce</Item>
+<Amount>220</Amount>
+</Expense>
+<Expense>
+<ExpenseId>2</ExpenseId>
+<UserId>1</UserId>
+<Date>20201020</Date>
+<Item>Czynsz za mieszkanie</Item>
+<Amount>1200</Amount>
+</Expense>
+</Expenses>

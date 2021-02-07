@@ -20,7 +20,7 @@ void BudzetOsobisty::wylogowanieUzytkownika() {
 
 int BudzetOsobisty::logowanieUzytkownika() {
     uzytkownikMenadzer.logowanieUzytkownika();
-    budzetMenadzer = new BudzetMenadzer (NAZWA_PLIKU_Z_PRZYCHODAMI, uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
+    budzetMenadzer = new BudzetMenadzer (NAZWA_PLIKU_Z_PRZYCHODAMI, NAZWA_PLIKU_Z_WYDATKAMI, uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
 }
 void BudzetOsobisty::zmianaHaslaZalogowanegoUzytkownika() {
     uzytkownikMenadzer.zmianaHaslaZalogowanegoUzytkownika();
@@ -29,6 +29,11 @@ void BudzetOsobisty::zmianaHaslaZalogowanegoUzytkownika() {
 void BudzetOsobisty::dodajPrzychod() {
     budzetMenadzer -> dodajPrzychod();
 }
+
+void BudzetOsobisty::dodajWydatek() {
+    budzetMenadzer -> dodajWydatek();
+}
+
 
 void BudzetOsobisty::wyswietlWszystkiePrzychody() {
     budzetMenadzer -> wyswietlWszystkiePrzychody();
@@ -43,3 +48,16 @@ cout << pobierzIdZalogowanegoUzytkownika() << endl;
 cout << budzetMenadzer -> pobierzIdOstatniegoPrzychodu() << endl;
 system("pause");
 }
+
+void BudzetOsobisty::bilansZObecnegoMiesiaca(){
+budzetMenadzer -> bilansZObecnegoMiesiaca();
+}
+
+void BudzetOsobisty::bilansZPoprzedniegoMiesiaca(){
+budzetMenadzer -> bilansZPoprzedniegoMiesiaca();
+}
+
+void BudzetOsobisty::bilansZWybranegoOkres(){
+budzetMenadzer -> bilansZWybranegoOkresu();
+}
+

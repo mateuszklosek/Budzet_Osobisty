@@ -11,11 +11,10 @@ int main() {
     char wybor;
 
     MetodyPomocnicze metodyPomocnicze;
-    BudzetOsobisty budzetOsobisty("users.xml", "incomes.xml");
+    BudzetOsobisty budzetOsobisty("users.xml", "incomes.xml", "expenses.xml");
 
 
     while (true) {
-
 
         if (budzetOsobisty.pobierzIdZalogowanegoUzytkownika() == 0) {
             system("cls");
@@ -52,14 +51,12 @@ int main() {
             cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
             cout << "---------------------------" << endl;
             cout << "1. Dodaj przychod" << endl;
-            cout << "2. Wyswietl wszytskie przychody" << endl;
-
+            cout << "2. Dodaj wydatek" << endl;
             cout << "3. Wyswietl id zalogowanego uzytkownika" << endl;
-            /*
-            cout << "4. Wyswietl adresatow" << endl;
-            cout << "5. Usun adresata" << endl;
-            cout << "6. Edytuj adresata" << endl;
-            cout << "---------------------------" << endl; */
+            cout << "4. Bilans z obecnego miesiaca" << endl;
+            cout << "5. Bilans z poprzedniego miesiaca" << endl;
+            cout << "6. Bilans z wybranego okresu" << endl;
+            cout << "---------------------------" << endl;
             cout << "7. Zmien haslo" << endl;
             cout << "8. Wyloguj sie" << endl;
             cout << "---------------------------" << endl;
@@ -71,22 +68,23 @@ int main() {
                 break;
 
             case '2':
-            budzetOsobisty.wyswietlWszystkiePrzychody();
-            break;
+                budzetOsobisty.dodajWydatek();
+                break;
 
             case '3':
-            budzetOsobisty.wyswietlIdZalogowanegoUzytkownika();
-            break;
-            /*
+                budzetOsobisty.wyswietlIdZalogowanegoUzytkownika();
+                break;
+
             case '4':
-            KsiazkaAdresowa.wyswietlWszystkichAdresatow();
-            break;
+                budzetOsobisty.bilansZObecnegoMiesiaca();
+                break;
+
             case '5':
-            plikZAdresatami.ustawIdOstatniegoAdresata(KsiazkaAdresowa.usunAdresata());
-            break;
+                budzetOsobisty.bilansZPoprzedniegoMiesiaca();
+                break;
             case '6':
-            KsiazkaAdresowa.edytujAdresata();
-            break; */
+               // budzetOsobisty.bilansZWybranegoOkres();
+                break;
             case '7':
                 budzetOsobisty.zmianaHaslaZalogowanegoUzytkownika();
                 break;
@@ -96,7 +94,6 @@ int main() {
             }
         }
     }
-
 
     return 0;
 }
